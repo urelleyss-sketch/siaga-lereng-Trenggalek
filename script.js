@@ -90,4 +90,49 @@ formRisiko.addEventListener("submit", function (e) {
       <p><strong>SEGERA EVAKUASI!</strong> Tinggalkan rumah menuju titik kumpul aman atau tempat yang lebih datar/jauh dari lereng. Segera hubungi perangkat desa atau BPBD.</p>
     `;
   }
+
+  // Inisialisasi Mini Map berpusat di Kabupaten Trenggalek (-8.1844, 111.7095)
+const miniMap = L.map('mini-map').setView([-8.1844, 111.7095], 10);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+  attribution: '© OpenStreetMap contributors'
+}).addTo(miniMap);
+
+// Tambahkan Marker Contoh Titik Kumpul di Bendungan
+L.marker([-8.0850, 111.7500]).addTo(miniMap)
+  .bindPopup('<b>Titik Kumpul Bendungan</b><br>Lapangan Utama');
+
+
+// Logika Membuka Peta Menjadi Besar (Modal)
+const modal = document.getElementById("map-modal");
+const btnExpand = document.getElementById("btn-expand-map");
+const btnClose = document.getElementById("close-modal");
+let fullMap = null;
+
+modal.classList.add("hidden"); // Sembunyikan modal di awal
+
+btnExpand.addEventListener("click", function () {
+  modal.classList.remove("hidden");
+
+  // Inisialisasi peta besar jika belum pernah dibuat
+  setTimeout(() => {
+    if (!fullMap) {
+      fullMap = L.map('full-map').setView([-8.1844, 111.7095], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+      }).addTo(fullMap);
+
+      // Tambahkan beberapa marker posko di peta besar
+      L.marker([-8.0850, 111.7500]).addTo(fullMap).bindPopup('Posko Siaga Bendungan');
+      L.marker([-8.2500, 111.6500]).addTo(fullMap).bindPopup('Posko Siaga Dongko');
+    } else {
+      fullMap.invalidateSize(); // Memperbarui ukuran peta agar tidak glitch
+    }
+  }, 200);
+});
+
+btnClose.addEventListener("click", function () {
+  modal.classList.add("hidden");
+});
 });
