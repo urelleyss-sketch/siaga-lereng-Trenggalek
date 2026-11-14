@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siaga Lereng Trenggalek - Mitigasi Longsor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>⛰️ Siaga Lereng Trenggalek</h1>
+    <p>Sistem Informasi & Cek Risiko Tanah Longsor Mandiri</p>
+  </header>
+
+  <main class="container">
+    <!-- Bagian 1: Cek Status Wilayah Kecamatan -->
+    <section class="card">
+      <h2>1. Cek Profil Kerawanan Wilayah</h2>
+      <label for="pilih-kecamatan">Pilih Kecamatan di Trenggalek:</label>
+      <select id="pilih-kecamatan">
+        <option value="">-- Pilih Kecamatan --</option>
+        <option value="bendungan">Kecamatan Bendungan</option>
+        <option value="dongko">Kecamatan Dongko</option>
+        <option value="panggul">Kecamatan Panggul</option>
+        <option value="tugu">Kecamatan Tugu</option>
+        <option value="kampak">Kecamatan Kampak</option>
+      </select>
+
+      <div id="info-wilayah" class="info-box hidden">
+        <!-- Data dari script.js akan muncul di sini -->
+      </div>
+    </section>
+
+    <!-- Bagian 2: Kalkulator Risiko Mandiri -->
+    <section class="card">
+      <h2>2. Cek Risiko Lingkungan Sekitar Rumah</h2>
+      <form id="form-risiko">
+        <div class="form-group">
+          <label>Intensitas Hujan Saat Ini:</label>
+          <select id="hujan" required>
+            <option value="0">Cerah / Gerimis Ringan</option>
+            <option value="2">Hujan Sedang (1 - 2 Jam)</option>
+            <option value="4">Hujan Deras Terus-Menerus (> 2 Jam)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kondisi Tanah & Sumber Air Sekitar:</label>
+          <select id="tanah" required>
+            <option value="0">Normal, tidak ada perubahan</option>
+            <option value="3">Air sumur/mata air mendadak keruh</option>
+            <option value="5">Muncul retakan baru di tanah/dinding rumah</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tanda Alam Sekitar Tebing:</label>
+          <select id="tanda" required>
+            <option value="0">Aman, tidak ada tanda aneh</option>
+            <option value="3">Pohon atau tiang listrik mulai miring</option>
+            <option value="5">Terdengar suara gemuruh / kerikil berjatuhan</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-analisis">Analisis Tingkat Risiko</button>
+      </form>
+
+      <div id="hasil-analisis" class="result-box hidden"></div>
+    </section>
+
+    <!-- Bagian 3: Kontak Darurat Lokal -->
+    <section class="card emergency-card">
+      <h2>3. Kontak Darurat Kabupaten Trenggalek</h2>
+      <p>Gunakan tombol di bawah jika terjadi keadaan darurat:</p>
+      <div class="btn-group">
+        <a href="tel:0355791234" class="btn-darurat">📞 Call Center BPBD Trenggalek</a>
+        <a href="https://maps.google.com/?q=BPBD+Kabupaten+Trenggalek" target="_blank" class="btn-maps">📍 Peta Posko BPBD</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dikembangkan untuk Pelatihan TIK Siswa 2026 | Kabupaten Trenggalek</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
