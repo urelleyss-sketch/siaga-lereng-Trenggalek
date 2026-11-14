@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siaga Lereng Trenggalek - Mitigasi Longsor</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -86,4 +90,22 @@
 
   <script src="script.js"></script>
 </body>
+  <!-- Bagian Peta Interaktif -->
+<section class="card">
+  <h2>📍 Peta Sebaran & Titik Kumpul Evakuasi</h2>
+  <p>Klik tombol di bawah untuk memperbesar peta wilayah.</p>
+  
+  <!-- Mini Map Container -->
+  <div id="mini-map" class="mini-map-box"></div>
+  <button id="btn-expand-map" class="btn-analisis" style="margin-top: 1rem;">Perbesar Peta (Fullscreen)</button>
+</section>
+
+<!-- Modal / Popup Peta Besar -->
+<div id="map-modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="close-modal">&times; Tampilkan Normal</span>
+    <h3>Peta Interaktif Wilayah Trenggalek</h3>
+    <div id="full-map"></div>
+  </div>
+</div>
 </html>
